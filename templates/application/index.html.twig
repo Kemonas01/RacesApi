@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ApplicationController!{% endblock %}
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
+
+
+<div class="vertical-center">
+  <div class="container">
+  <div class="d-flex justify-content-center">
+    <h1>Liste des courses</h1>
+  </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id :</th>
+            <th scope="col">Nom : </th>
+            <th scope="col">Commence le :</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+      
+      </table>
+      <div class="d-flex justify-content-center">
+          <div class="pagination">
+            <a href='#' id="previous">&laquo;</a>
+          </div>
+          <div class="pagination">
+            <a href='#' id="next">&raquo;</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-center">
+<form name="races-list-parameters">
+    <label>Trier :
+        <select name="order">
+            <option value="name" selected>Nom</option>
+            <option value="willStartAt">Date</option>
+        </select>
+    </label>
+    <label>Filtrer :
+        <select name="isClosed">
+            <option value="" selected>Toutes</option>
+            <option value="true">Closes</option>
+            <option value="false">À venir</option>
+        </select>
+    </label>
+    <label>Nom : <input name="search"/></label>
+    <button class="rrr" type="submit">Filtrer</button>
+</form>
+</div>
+<script src="{{ asset('js/application/index.js') }}"></script>
+
+{% endblock %}
